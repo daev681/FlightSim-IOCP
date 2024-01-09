@@ -12,7 +12,6 @@ public:
 	static LPFN_DISCONNECTEX	DisconnectEx;
 	static LPFN_ACCEPTEX		AcceptEx;
 
-
 public:
 	static void Init();
 	static void Clear();

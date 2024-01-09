@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -72,19 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Libraries\Libs\ServerCore\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Libraries\Libs\ServerCore\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Libraries\Libs\ServerCore\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Libraries\Libs\ServerCore\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -156,19 +156,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Allocator.h" />
+    <ClInclude Include="BufferReader.h" />
+    <ClInclude Include="BufferWriter.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="CoreMacro.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="CoreTLS.h" />
     <ClInclude Include="DeadLockProfiler.h" />
+    <ClInclude Include="IocpCore.h" />
+    <ClInclude Include="IocpEvent.h" />
+    <ClInclude Include="Listener.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="MemoryPool.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RecvBuffer.h" />
     <ClInclude Include="RefCounting.h" />
+    <ClInclude Include="SendBuffer.h" />
+    <ClInclude Include="Service.h" />
+    <ClInclude Include="Session.h" />
     <ClInclude Include="SocketUtils.h" />
     <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="TypeCast.h" />
@@ -176,10 +185,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Allocator.cpp" />
+    <ClCompile Include="BufferReader.cpp" />
+    <ClCompile Include="BufferWriter.cpp" />
     <ClCompile Include="CoreGlobal.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="CoreTLS.cpp" />
     <ClCompile Include="DeadLockProfiler.cpp" />
+    <ClCompile Include="IocpCore.cpp" />
+    <ClCompile Include="IocpEvent.cpp" />
+    <ClCompile Include="Listener.cpp" />
     <ClCompile Include="Lock.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="MemoryPool.cpp" />
@@ -190,7 +204,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="RecvBuffer.cpp" />
     <ClCompile Include="RefCounting.cpp" />
+    <ClCompile Include="SendBuffer.cpp" />
+    <ClCompile Include="Service.cpp" />
+    <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
