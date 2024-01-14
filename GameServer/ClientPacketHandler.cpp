@@ -12,6 +12,7 @@ bool Handle_INVALID(PacketSessionRef& session, BYTE* buffer, int32 len)
 {
 	PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 	// TODO : Log
+	cout << "Handle_INVALID: " << buffer << endl;
 	return false;
 }
 
@@ -66,6 +67,8 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 
 bool Handle_C_ENTER_GAME(PacketSessionRef& session, Protocol::C_ENTER_GAME& pkt)
 {
+	std::cout << pkt.playerindex() << endl;
+
 	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
 
 	uint64 index = pkt.playerindex();
@@ -94,3 +97,17 @@ bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt)
 
 	return true;
 }
+
+bool Handle_C_TEST(PacketSessionRef& session, Protocol::C_CHAT& pkt)
+{
+	std::cout << pkt.msg() << endl;
+
+	Protocol::S_CHAT chatPkt;
+	chatPkt.set_msg(pkt.msg());
+	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(chatPkt);
+
+	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
+
+	return true;
+}
+
