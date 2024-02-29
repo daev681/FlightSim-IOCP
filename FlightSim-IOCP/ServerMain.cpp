@@ -28,6 +28,8 @@ struct Session
 	SOCKET socket = INVALID_SOCKET;
 	char recvBuffer[BUFSIZE] = {};
 	int32 recvBytes = 0;
+	char sendBuffer[BUFSIZE] = {};
+	int32 sendBytes = 0;
 };
 
 enum IO_TYPE
@@ -62,8 +64,8 @@ void WorkerThreadMain(HANDLE iocpHandle)
 		}
 
 		ASSERT_CRASH(overlappedEx->type == IO_TYPE::READ);
-
 		cout << "Recv Data IOCP = " << bytesTransferred << endl;
+		cout << "Recv Data IOCP = " << session->recvBuffer << endl;
 
 		WSABUF wsaBuf;
 		wsaBuf.buf = session->recvBuffer;
@@ -72,6 +74,7 @@ void WorkerThreadMain(HANDLE iocpHandle)
 		DWORD recvLen = 0;
 		DWORD flags = 0;
 		::WSARecv(session->socket, &wsaBuf, 1, &recvLen, &flags, &overlappedEx->overlapped, NULL);
+
 	}
 }
 
@@ -132,7 +135,7 @@ int main()
 		if (clientSocket == INVALID_SOCKET)
 			return 0;
 
-		Session* session = new Session();
+		Session* session = xnew<Session>();
 		session->socket = clientSocket;
 		sessionManager.push_back(session);
 
