@@ -55,6 +55,10 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 		playerRef->playerId = idGenerator++;
 		playerRef->name = player->name();
 		playerRef->type = player->playertype();
+		playerRef->x = 0;
+		playerRef->y = 350;
+		playerRef->z = -2200;
+
 		playerRef->ownerSession = gameSession;
 
 		gameSession->_players.push_back(playerRef);
@@ -68,7 +72,6 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 
 bool Handle_C_ENTER_GAME(PacketSessionRef& session, Protocol::C_ENTER_GAME& pkt)
 {
-	std::cout << pkt.playerindex() << endl;
 
 	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
 
@@ -96,6 +99,29 @@ bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt)
 
 	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
 
+	return true;
+}
+
+bool Handle_C_POSITION(PacketSessionRef& session, Protocol::C_POSITION& pkt)
+{
+	std::cout << pkt.x() << endl;
+	std::cout << pkt.y() << endl;
+	std::cout << pkt.z() << endl;
+	Protocol::S_POSITION positionPkt;
+	positionPkt.set_playerid(pkt.playerid());
+	positionPkt.set_x(pkt.x());
+	positionPkt.set_y(pkt.y());
+	positionPkt.set_z(pkt.z());
+	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(positionPkt);
+
+	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
+
+
+	return true;
+}
+
+bool Handle_C_MISSILE(PacketSessionRef& session, Protocol::C_MISSILE& pkt)
+{
 	return true;
 }
 
