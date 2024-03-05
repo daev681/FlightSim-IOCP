@@ -13,8 +13,10 @@ enum : uint16
 	PKT_S_CHAT = 1005,
 	PKT_C_POSITION = 1006,
 	PKT_S_POSITION = 1007,
-	PKT_C_DESTORY = 1010,
-	PKT_S_DESTORY = 1011,
+	PKT_C_MISSILE = 1008,
+	PKT_S_MISSILE = 1009,
+	PKT_C_DESTROY = 1010,
+	PKT_S_DESTROY = 1011,
 };
 
 // Custom Handlers
@@ -24,7 +26,7 @@ bool Handle_C_ENTER_GAME(PacketSessionRef& session, Protocol::C_ENTER_GAME& pkt)
 bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt);
 bool Handle_C_POSITION(PacketSessionRef& session, Protocol::C_POSITION& pkt);
 bool Handle_C_MISSILE(PacketSessionRef& session, Protocol::C_MISSILE& pkt);
-bool Handle_C_DESTORY(PacketSessionRef& session, Protocol::C_DESTORY& pkt);
+bool Handle_C_DESTORY(PacketSessionRef& session, Protocol::C_DESTROY& pkt);
 
 class ClientPacketHandler
 {
@@ -37,7 +39,8 @@ public:
 		GPacketHandler[PKT_C_ENTER_GAME] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_ENTER_GAME>(Handle_C_ENTER_GAME, session, buffer, len); };
 		GPacketHandler[PKT_C_CHAT] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_CHAT>(Handle_C_CHAT, session, buffer, len); };
 		GPacketHandler[PKT_C_POSITION] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_POSITION>(Handle_C_POSITION, session, buffer, len); };
-		GPacketHandler[PKT_C_DESTORY] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_DESTORY>(Handle_C_DESTORY, session, buffer, len); };
+		GPacketHandler[PKT_C_MISSILE] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_MISSILE>(Handle_C_MISSILE, session, buffer, len); };
+		GPacketHandler[PKT_C_DESTROY] = [](PacketSessionRef& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_DESTROY>(Handle_C_DESTORY, session, buffer, len); };
 	}
 
 	static bool HandlePacket(PacketSessionRef& session, BYTE* buffer, int32 len)
@@ -49,7 +52,8 @@ public:
 	static SendBufferRef MakeSendBuffer(Protocol::S_ENTER_GAME& pkt) { return MakeSendBuffer(pkt, PKT_S_ENTER_GAME); }
 	static SendBufferRef MakeSendBuffer(Protocol::S_CHAT& pkt) { return MakeSendBuffer(pkt, PKT_S_CHAT); }
 	static SendBufferRef MakeSendBuffer(Protocol::S_POSITION& pkt) { return MakeSendBuffer(pkt, PKT_S_POSITION); }
-	static SendBufferRef MakeSendBuffer(Protocol::S_DESTORY& pkt) { return MakeSendBuffer(pkt, PKT_S_DESTORY); }
+	static SendBufferRef MakeSendBuffer(Protocol::S_MISSILE& pkt) { return MakeSendBuffer(pkt, PKT_S_MISSILE); }
+	static SendBufferRef MakeSendBuffer(Protocol::S_DESTROY& pkt) { return MakeSendBuffer(pkt, PKT_S_DESTROY); }
 private:
 	template<typename PacketType, typename ProcessFunc>
 	static bool HandlePacket(ProcessFunc func, PacketSessionRef& session, BYTE* buffer, int32 len)

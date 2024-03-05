@@ -6,11 +6,25 @@
 static std::unordered_map<int, PlayerRef> currentPlayersMap;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
+// 이미 처리한 패킷의 식별자를 저장하는 HashSet
+std::unordered_set<int> processedPacketIds;
+
 
 // IsPlayerIDExists 함수 수정
 bool IsPlayerIDExists(int playerId) {
 	// unordered_map의 find 함수를 사용하여 playerId를 탐색
 	return currentPlayersMap.find(playerId) != currentPlayersMap.end();
+}
+
+void removePlayer(int playerId) {
+	auto it = currentPlayersMap.find(playerId);
+	if (it != currentPlayersMap.end()) {
+		currentPlayersMap.erase(it);
+	
+	}
+	else {
+	}
+		
 }
 
 // 직접 컨텐츠 작업자
@@ -57,9 +71,9 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 		player->set_name(u8"AIrPlane" + to_string(idGenerator));
 		player->set_id(idGenerator);
 		player->set_playertype(Protocol::PLAYER_TYPE_MAGE);
-		player->set_x(0);
-		player->set_y(450);
-		player->set_z(-2500);
+		player->set_x(-1.0);
+		player->set_y(450.0);
+		player->set_z(-2500.0);
 		PlayerRef playerRef = MakeShared<Player>();
 		playerRef->playerId = idGenerator++;
 		playerRef->name = player->name();
@@ -128,34 +142,73 @@ bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt)
 
 bool Handle_C_POSITION(PacketSessionRef& session, Protocol::C_POSITION& pkt)
 {
-	
+
 	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
 	PlayerRef player = gameSession->_players[0]; // READ_ONLY?
 
-	if (!IsPlayerIDExists(player->playerId)) {
-		PlayerRef currentSession = currentPlayersMap[player->playerId];
-		currentSession->x = pkt.x();
-		currentSession->y = pkt.y();
-		currentSession->z = pkt.z();
-		currentPlayersMap[player->playerId] = currentSession;
-		Protocol::S_POSITION positionPkt;
-		for (const auto& currentPlayer : currentPlayersMap) {
+
+	
+	int packetId = PKT_C_POSITION;
+
+	
+		cout << "Position Sync - ID: " << player->playerId
+		<< ", X: " << pkt.x()
+		<< ", Y: " << pkt.y()
+		<< ", Z: " << pkt.z() << endl;
+		
+			PlayerRef currentSession = currentPlayersMap[player->playerId];
+			currentSession->x = pkt.x();
+			currentSession->y = pkt.y();
+			currentSession->z = pkt.z();
+			currentPlayersMap[player->playerId] = currentSession;
+			Protocol::S_POSITION positionPkt;
+			for (const auto& currentPlayer : currentPlayersMap) {
 			Protocol::Player* playerMsg = positionPkt.add_currentallplayers();
-		}
-		auto sendBuffer = ClientPacketHandler::MakeSendBuffer(positionPkt);
-		GRoom.Broadcast(sendBuffer); // WRITE_LOCK
-	}
+			playerMsg->set_id(currentPlayer.second->playerId);
+			playerMsg->set_name(currentPlayer.second->name);
+			playerMsg->set_x(currentPlayer.second->x);
+			playerMsg->set_y(currentPlayer.second->y);
+			playerMsg->set_z(currentPlayer.second->z);
+			}
+			auto sendBuffer = ClientPacketHandler::MakeSendBuffer(positionPkt);
+			GRoom.Broadcast(sendBuffer); // WRITE_LOCK
+	
+
 
 	return true;
 }
 
 bool Handle_C_MISSILE(PacketSessionRef& session, Protocol::C_MISSILE& pkt)
 {
+
+	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
+	PlayerRef player = gameSession->_players[0]; // READ_ONLY?
+	Protocol::S_MISSILE missilePkt;
+	cout << "MISSILE LAUNCH !!!! ID: " << player->playerId << endl;
+	missilePkt.set_px(pkt.px());
+	missilePkt.set_py(pkt.py());
+	missilePkt.set_pz(pkt.pz());
+	missilePkt.set_rx(pkt.rx());
+	missilePkt.set_ry(pkt.ry());
+	missilePkt.set_rz(pkt.rz());
+	missilePkt.set_playerid(player->playerId);
+
+	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(missilePkt);
+	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
+
 	return true;
 }
 
-bool Handle_C_DESTORY(PacketSessionRef& session, Protocol::C_DESTORY& pkt)
+bool Handle_C_DESTORY(PacketSessionRef& session, Protocol::C_DESTROY& pkt)
 {
+	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
+	PlayerRef player = gameSession->_players[0]; // READ_ONLY?
+	removePlayer(player->playerId);
+	Protocol::S_DESTROY destoryPkt;
+	destoryPkt.set_success(1);
+	destoryPkt.set_playerid(player->playerId);
+	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(destoryPkt);
+	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
 	return false;
 }
 

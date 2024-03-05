@@ -59,9 +59,9 @@ namespace Protocol {
 class C_CHAT;
 struct C_CHATDefaultTypeInternal;
 extern C_CHATDefaultTypeInternal _C_CHAT_default_instance_;
-class C_DESTORY;
-struct C_DESTORYDefaultTypeInternal;
-extern C_DESTORYDefaultTypeInternal _C_DESTORY_default_instance_;
+class C_DESTROY;
+struct C_DESTROYDefaultTypeInternal;
+extern C_DESTROYDefaultTypeInternal _C_DESTROY_default_instance_;
 class C_ENTER_GAME;
 struct C_ENTER_GAMEDefaultTypeInternal;
 extern C_ENTER_GAMEDefaultTypeInternal _C_ENTER_GAME_default_instance_;
@@ -80,9 +80,9 @@ extern C_POSITIONDefaultTypeInternal _C_POSITION_default_instance_;
 class S_CHAT;
 struct S_CHATDefaultTypeInternal;
 extern S_CHATDefaultTypeInternal _S_CHAT_default_instance_;
-class S_DESTORY;
-struct S_DESTORYDefaultTypeInternal;
-extern S_DESTORYDefaultTypeInternal _S_DESTORY_default_instance_;
+class S_DESTROY;
+struct S_DESTROYDefaultTypeInternal;
+extern S_DESTROYDefaultTypeInternal _S_DESTROY_default_instance_;
 class S_ENTER_GAME;
 struct S_ENTER_GAMEDefaultTypeInternal;
 extern S_ENTER_GAMEDefaultTypeInternal _S_ENTER_GAME_default_instance_;
@@ -101,14 +101,14 @@ extern S_POSITIONDefaultTypeInternal _S_POSITION_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
 template<> ::Protocol::C_CHAT* Arena::CreateMaybeMessage<::Protocol::C_CHAT>(Arena*);
-template<> ::Protocol::C_DESTORY* Arena::CreateMaybeMessage<::Protocol::C_DESTORY>(Arena*);
+template<> ::Protocol::C_DESTROY* Arena::CreateMaybeMessage<::Protocol::C_DESTROY>(Arena*);
 template<> ::Protocol::C_ENTER_GAME* Arena::CreateMaybeMessage<::Protocol::C_ENTER_GAME>(Arena*);
 template<> ::Protocol::C_INFO* Arena::CreateMaybeMessage<::Protocol::C_INFO>(Arena*);
 template<> ::Protocol::C_LOGIN* Arena::CreateMaybeMessage<::Protocol::C_LOGIN>(Arena*);
 template<> ::Protocol::C_MISSILE* Arena::CreateMaybeMessage<::Protocol::C_MISSILE>(Arena*);
 template<> ::Protocol::C_POSITION* Arena::CreateMaybeMessage<::Protocol::C_POSITION>(Arena*);
 template<> ::Protocol::S_CHAT* Arena::CreateMaybeMessage<::Protocol::S_CHAT>(Arena*);
-template<> ::Protocol::S_DESTORY* Arena::CreateMaybeMessage<::Protocol::S_DESTORY>(Arena*);
+template<> ::Protocol::S_DESTROY* Arena::CreateMaybeMessage<::Protocol::S_DESTROY>(Arena*);
 template<> ::Protocol::S_ENTER_GAME* Arena::CreateMaybeMessage<::Protocol::S_ENTER_GAME>(Arena*);
 template<> ::Protocol::S_INFO* Arena::CreateMaybeMessage<::Protocol::S_INFO>(Arena*);
 template<> ::Protocol::S_LOGIN* Arena::CreateMaybeMessage<::Protocol::S_LOGIN>(Arena*);
@@ -1361,6 +1361,68 @@ class C_MISSILE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kPxFieldNumber = 1,
+    kPyFieldNumber = 2,
+    kPzFieldNumber = 3,
+    kRxFieldNumber = 4,
+    kRyFieldNumber = 5,
+    kRzFieldNumber = 6,
+  };
+  // float px = 1;
+  void clear_px();
+  float px() const;
+  void set_px(float value);
+  private:
+  float _internal_px() const;
+  void _internal_set_px(float value);
+  public:
+
+  // float py = 2;
+  void clear_py();
+  float py() const;
+  void set_py(float value);
+  private:
+  float _internal_py() const;
+  void _internal_set_py(float value);
+  public:
+
+  // float pz = 3;
+  void clear_pz();
+  float pz() const;
+  void set_pz(float value);
+  private:
+  float _internal_pz() const;
+  void _internal_set_pz(float value);
+  public:
+
+  // float rx = 4;
+  void clear_rx();
+  float rx() const;
+  void set_rx(float value);
+  private:
+  float _internal_rx() const;
+  void _internal_set_rx(float value);
+  public:
+
+  // float ry = 5;
+  void clear_ry();
+  float ry() const;
+  void set_ry(float value);
+  private:
+  float _internal_ry() const;
+  void _internal_set_ry(float value);
+  public:
+
+  // float rz = 6;
+  void clear_rz();
+  float rz() const;
+  void set_rz(float value);
+  private:
+  float _internal_rz() const;
+  void _internal_set_rz(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.C_MISSILE)
  private:
   class _Internal;
@@ -1368,6 +1430,12 @@ class C_MISSILE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  float px_;
+  float py_;
+  float pz_;
+  float rx_;
+  float ry_;
+  float rz_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Protocol_2eproto;
 };
@@ -1480,6 +1548,78 @@ class S_MISSILE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kPlayerIdFieldNumber = 1,
+    kPxFieldNumber = 2,
+    kPyFieldNumber = 3,
+    kPzFieldNumber = 4,
+    kRxFieldNumber = 5,
+    kRyFieldNumber = 6,
+    kRzFieldNumber = 7,
+  };
+  // uint64 playerId = 1;
+  void clear_playerid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 playerid() const;
+  void set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_playerid() const;
+  void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // float px = 2;
+  void clear_px();
+  float px() const;
+  void set_px(float value);
+  private:
+  float _internal_px() const;
+  void _internal_set_px(float value);
+  public:
+
+  // float py = 3;
+  void clear_py();
+  float py() const;
+  void set_py(float value);
+  private:
+  float _internal_py() const;
+  void _internal_set_py(float value);
+  public:
+
+  // float pz = 4;
+  void clear_pz();
+  float pz() const;
+  void set_pz(float value);
+  private:
+  float _internal_pz() const;
+  void _internal_set_pz(float value);
+  public:
+
+  // float rx = 5;
+  void clear_rx();
+  float rx() const;
+  void set_rx(float value);
+  private:
+  float _internal_rx() const;
+  void _internal_set_rx(float value);
+  public:
+
+  // float ry = 6;
+  void clear_ry();
+  float ry() const;
+  void set_ry(float value);
+  private:
+  float _internal_ry() const;
+  void _internal_set_ry(float value);
+  public:
+
+  // float rz = 7;
+  void clear_rz();
+  float rz() const;
+  void set_rz(float value);
+  private:
+  float _internal_rz() const;
+  void _internal_set_rz(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_MISSILE)
  private:
   class _Internal;
@@ -1487,29 +1627,36 @@ class S_MISSILE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 playerid_;
+  float px_;
+  float py_;
+  float pz_;
+  float rx_;
+  float ry_;
+  float rz_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
-class C_DESTORY final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_DESTORY) */ {
+class C_DESTROY final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_DESTROY) */ {
  public:
-  inline C_DESTORY() : C_DESTORY(nullptr) {}
-  ~C_DESTORY() override;
-  explicit constexpr C_DESTORY(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline C_DESTROY() : C_DESTROY(nullptr) {}
+  ~C_DESTROY() override;
+  explicit constexpr C_DESTROY(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  C_DESTORY(const C_DESTORY& from);
-  C_DESTORY(C_DESTORY&& from) noexcept
-    : C_DESTORY() {
+  C_DESTROY(const C_DESTROY& from);
+  C_DESTROY(C_DESTROY&& from) noexcept
+    : C_DESTROY() {
     *this = ::std::move(from);
   }
 
-  inline C_DESTORY& operator=(const C_DESTORY& from) {
+  inline C_DESTROY& operator=(const C_DESTROY& from) {
     CopyFrom(from);
     return *this;
   }
-  inline C_DESTORY& operator=(C_DESTORY&& from) noexcept {
+  inline C_DESTROY& operator=(C_DESTROY&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()) {
       InternalSwap(&from);
@@ -1528,20 +1675,20 @@ class C_DESTORY final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const C_DESTORY& default_instance() {
+  static const C_DESTROY& default_instance() {
     return *internal_default_instance();
   }
-  static inline const C_DESTORY* internal_default_instance() {
-    return reinterpret_cast<const C_DESTORY*>(
-               &_C_DESTORY_default_instance_);
+  static inline const C_DESTROY* internal_default_instance() {
+    return reinterpret_cast<const C_DESTROY*>(
+               &_C_DESTROY_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     10;
 
-  friend void swap(C_DESTORY& a, C_DESTORY& b) {
+  friend void swap(C_DESTROY& a, C_DESTROY& b) {
     a.Swap(&b);
   }
-  inline void Swap(C_DESTORY* other) {
+  inline void Swap(C_DESTROY* other) {
     if (other == this) return;
     if (GetOwningArena() == other->GetOwningArena()) {
       InternalSwap(other);
@@ -1549,7 +1696,7 @@ class C_DESTORY final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(C_DESTORY* other) {
+  void UnsafeArenaSwap(C_DESTROY* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1557,17 +1704,17 @@ class C_DESTORY final :
 
   // implements Message ----------------------------------------------
 
-  inline C_DESTORY* New() const final {
-    return new C_DESTORY();
+  inline C_DESTROY* New() const final {
+    return new C_DESTROY();
   }
 
-  C_DESTORY* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<C_DESTORY>(arena);
+  C_DESTROY* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<C_DESTROY>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const C_DESTORY& from);
-  void MergeFrom(const C_DESTORY& from);
+  void CopyFrom(const C_DESTROY& from);
+  void MergeFrom(const C_DESTROY& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1581,13 +1728,13 @@ class C_DESTORY final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(C_DESTORY* other);
+  void InternalSwap(C_DESTROY* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Protocol.C_DESTORY";
+    return "Protocol.C_DESTROY";
   }
   protected:
-  explicit C_DESTORY(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit C_DESTROY(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1599,7 +1746,7 @@ class C_DESTORY final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:Protocol.C_DESTORY)
+  // @@protoc_insertion_point(class_scope:Protocol.C_DESTROY)
  private:
   class _Internal;
 
@@ -1611,24 +1758,24 @@ class C_DESTORY final :
 };
 // -------------------------------------------------------------------
 
-class S_DESTORY final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_DESTORY) */ {
+class S_DESTROY final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_DESTROY) */ {
  public:
-  inline S_DESTORY() : S_DESTORY(nullptr) {}
-  ~S_DESTORY() override;
-  explicit constexpr S_DESTORY(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline S_DESTROY() : S_DESTROY(nullptr) {}
+  ~S_DESTROY() override;
+  explicit constexpr S_DESTROY(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  S_DESTORY(const S_DESTORY& from);
-  S_DESTORY(S_DESTORY&& from) noexcept
-    : S_DESTORY() {
+  S_DESTROY(const S_DESTROY& from);
+  S_DESTROY(S_DESTROY&& from) noexcept
+    : S_DESTROY() {
     *this = ::std::move(from);
   }
 
-  inline S_DESTORY& operator=(const S_DESTORY& from) {
+  inline S_DESTROY& operator=(const S_DESTROY& from) {
     CopyFrom(from);
     return *this;
   }
-  inline S_DESTORY& operator=(S_DESTORY&& from) noexcept {
+  inline S_DESTROY& operator=(S_DESTROY&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()) {
       InternalSwap(&from);
@@ -1647,20 +1794,20 @@ class S_DESTORY final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const S_DESTORY& default_instance() {
+  static const S_DESTROY& default_instance() {
     return *internal_default_instance();
   }
-  static inline const S_DESTORY* internal_default_instance() {
-    return reinterpret_cast<const S_DESTORY*>(
-               &_S_DESTORY_default_instance_);
+  static inline const S_DESTROY* internal_default_instance() {
+    return reinterpret_cast<const S_DESTROY*>(
+               &_S_DESTROY_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     11;
 
-  friend void swap(S_DESTORY& a, S_DESTORY& b) {
+  friend void swap(S_DESTROY& a, S_DESTROY& b) {
     a.Swap(&b);
   }
-  inline void Swap(S_DESTORY* other) {
+  inline void Swap(S_DESTROY* other) {
     if (other == this) return;
     if (GetOwningArena() == other->GetOwningArena()) {
       InternalSwap(other);
@@ -1668,7 +1815,7 @@ class S_DESTORY final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(S_DESTORY* other) {
+  void UnsafeArenaSwap(S_DESTROY* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1676,17 +1823,17 @@ class S_DESTORY final :
 
   // implements Message ----------------------------------------------
 
-  inline S_DESTORY* New() const final {
-    return new S_DESTORY();
+  inline S_DESTROY* New() const final {
+    return new S_DESTROY();
   }
 
-  S_DESTORY* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<S_DESTORY>(arena);
+  S_DESTROY* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<S_DESTROY>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const S_DESTORY& from);
-  void MergeFrom(const S_DESTORY& from);
+  void CopyFrom(const S_DESTROY& from);
+  void MergeFrom(const S_DESTROY& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1700,13 +1847,13 @@ class S_DESTORY final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(S_DESTORY* other);
+  void InternalSwap(S_DESTROY* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Protocol.S_DESTORY";
+    return "Protocol.S_DESTROY";
   }
   protected:
-  explicit S_DESTORY(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit S_DESTROY(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -1740,7 +1887,7 @@ class S_DESTORY final :
   void _internal_set_success(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Protocol.S_DESTORY)
+  // @@protoc_insertion_point(class_scope:Protocol.S_DESTROY)
  private:
   class _Internal;
 
@@ -2393,56 +2540,316 @@ S_POSITION::currentallplayers() const {
 
 // C_MISSILE
 
+// float px = 1;
+inline void C_MISSILE::clear_px() {
+  px_ = 0;
+}
+inline float C_MISSILE::_internal_px() const {
+  return px_;
+}
+inline float C_MISSILE::px() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.px)
+  return _internal_px();
+}
+inline void C_MISSILE::_internal_set_px(float value) {
+  
+  px_ = value;
+}
+inline void C_MISSILE::set_px(float value) {
+  _internal_set_px(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.px)
+}
+
+// float py = 2;
+inline void C_MISSILE::clear_py() {
+  py_ = 0;
+}
+inline float C_MISSILE::_internal_py() const {
+  return py_;
+}
+inline float C_MISSILE::py() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.py)
+  return _internal_py();
+}
+inline void C_MISSILE::_internal_set_py(float value) {
+  
+  py_ = value;
+}
+inline void C_MISSILE::set_py(float value) {
+  _internal_set_py(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.py)
+}
+
+// float pz = 3;
+inline void C_MISSILE::clear_pz() {
+  pz_ = 0;
+}
+inline float C_MISSILE::_internal_pz() const {
+  return pz_;
+}
+inline float C_MISSILE::pz() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.pz)
+  return _internal_pz();
+}
+inline void C_MISSILE::_internal_set_pz(float value) {
+  
+  pz_ = value;
+}
+inline void C_MISSILE::set_pz(float value) {
+  _internal_set_pz(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.pz)
+}
+
+// float rx = 4;
+inline void C_MISSILE::clear_rx() {
+  rx_ = 0;
+}
+inline float C_MISSILE::_internal_rx() const {
+  return rx_;
+}
+inline float C_MISSILE::rx() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.rx)
+  return _internal_rx();
+}
+inline void C_MISSILE::_internal_set_rx(float value) {
+  
+  rx_ = value;
+}
+inline void C_MISSILE::set_rx(float value) {
+  _internal_set_rx(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.rx)
+}
+
+// float ry = 5;
+inline void C_MISSILE::clear_ry() {
+  ry_ = 0;
+}
+inline float C_MISSILE::_internal_ry() const {
+  return ry_;
+}
+inline float C_MISSILE::ry() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.ry)
+  return _internal_ry();
+}
+inline void C_MISSILE::_internal_set_ry(float value) {
+  
+  ry_ = value;
+}
+inline void C_MISSILE::set_ry(float value) {
+  _internal_set_ry(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.ry)
+}
+
+// float rz = 6;
+inline void C_MISSILE::clear_rz() {
+  rz_ = 0;
+}
+inline float C_MISSILE::_internal_rz() const {
+  return rz_;
+}
+inline float C_MISSILE::rz() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.rz)
+  return _internal_rz();
+}
+inline void C_MISSILE::_internal_set_rz(float value) {
+  
+  rz_ = value;
+}
+inline void C_MISSILE::set_rz(float value) {
+  _internal_set_rz(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.rz)
+}
+
 // -------------------------------------------------------------------
 
 // S_MISSILE
 
-// -------------------------------------------------------------------
-
-// C_DESTORY
-
-// -------------------------------------------------------------------
-
-// S_DESTORY
-
 // uint64 playerId = 1;
-inline void S_DESTORY::clear_playerid() {
+inline void S_MISSILE::clear_playerid() {
   playerid_ = uint64_t{0u};
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTORY::_internal_playerid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_MISSILE::_internal_playerid() const {
   return playerid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTORY::playerid() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DESTORY.playerId)
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_MISSILE::playerid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.playerId)
   return _internal_playerid();
 }
-inline void S_DESTORY::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void S_MISSILE::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   playerid_ = value;
 }
-inline void S_DESTORY::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void S_MISSILE::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_playerid(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_DESTORY.playerId)
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.playerId)
+}
+
+// float px = 2;
+inline void S_MISSILE::clear_px() {
+  px_ = 0;
+}
+inline float S_MISSILE::_internal_px() const {
+  return px_;
+}
+inline float S_MISSILE::px() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.px)
+  return _internal_px();
+}
+inline void S_MISSILE::_internal_set_px(float value) {
+  
+  px_ = value;
+}
+inline void S_MISSILE::set_px(float value) {
+  _internal_set_px(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.px)
+}
+
+// float py = 3;
+inline void S_MISSILE::clear_py() {
+  py_ = 0;
+}
+inline float S_MISSILE::_internal_py() const {
+  return py_;
+}
+inline float S_MISSILE::py() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.py)
+  return _internal_py();
+}
+inline void S_MISSILE::_internal_set_py(float value) {
+  
+  py_ = value;
+}
+inline void S_MISSILE::set_py(float value) {
+  _internal_set_py(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.py)
+}
+
+// float pz = 4;
+inline void S_MISSILE::clear_pz() {
+  pz_ = 0;
+}
+inline float S_MISSILE::_internal_pz() const {
+  return pz_;
+}
+inline float S_MISSILE::pz() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.pz)
+  return _internal_pz();
+}
+inline void S_MISSILE::_internal_set_pz(float value) {
+  
+  pz_ = value;
+}
+inline void S_MISSILE::set_pz(float value) {
+  _internal_set_pz(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.pz)
+}
+
+// float rx = 5;
+inline void S_MISSILE::clear_rx() {
+  rx_ = 0;
+}
+inline float S_MISSILE::_internal_rx() const {
+  return rx_;
+}
+inline float S_MISSILE::rx() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.rx)
+  return _internal_rx();
+}
+inline void S_MISSILE::_internal_set_rx(float value) {
+  
+  rx_ = value;
+}
+inline void S_MISSILE::set_rx(float value) {
+  _internal_set_rx(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.rx)
+}
+
+// float ry = 6;
+inline void S_MISSILE::clear_ry() {
+  ry_ = 0;
+}
+inline float S_MISSILE::_internal_ry() const {
+  return ry_;
+}
+inline float S_MISSILE::ry() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.ry)
+  return _internal_ry();
+}
+inline void S_MISSILE::_internal_set_ry(float value) {
+  
+  ry_ = value;
+}
+inline void S_MISSILE::set_ry(float value) {
+  _internal_set_ry(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.ry)
+}
+
+// float rz = 7;
+inline void S_MISSILE::clear_rz() {
+  rz_ = 0;
+}
+inline float S_MISSILE::_internal_rz() const {
+  return rz_;
+}
+inline float S_MISSILE::rz() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.rz)
+  return _internal_rz();
+}
+inline void S_MISSILE::_internal_set_rz(float value) {
+  
+  rz_ = value;
+}
+inline void S_MISSILE::set_rz(float value) {
+  _internal_set_rz(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.rz)
+}
+
+// -------------------------------------------------------------------
+
+// C_DESTROY
+
+// -------------------------------------------------------------------
+
+// S_DESTROY
+
+// uint64 playerId = 1;
+inline void S_DESTROY::clear_playerid() {
+  playerid_ = uint64_t{0u};
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTROY::_internal_playerid() const {
+  return playerid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTROY::playerid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_DESTROY.playerId)
+  return _internal_playerid();
+}
+inline void S_DESTROY::_internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  playerid_ = value;
+}
+inline void S_DESTROY::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_playerid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_DESTROY.playerId)
 }
 
 // uint64 success = 2;
-inline void S_DESTORY::clear_success() {
+inline void S_DESTROY::clear_success() {
   success_ = uint64_t{0u};
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTORY::_internal_success() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTROY::_internal_success() const {
   return success_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTORY::success() const {
-  // @@protoc_insertion_point(field_get:Protocol.S_DESTORY.success)
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_DESTROY::success() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_DESTROY.success)
   return _internal_success();
 }
-inline void S_DESTORY::_internal_set_success(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void S_DESTROY::_internal_set_success(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   success_ = value;
 }
-inline void S_DESTORY::set_success(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void S_DESTROY::set_success(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:Protocol.S_DESTORY.success)
+  // @@protoc_insertion_point(field_set:Protocol.S_DESTROY.success)
 }
 
 // -------------------------------------------------------------------
