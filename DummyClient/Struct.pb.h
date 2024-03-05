@@ -177,6 +177,9 @@ class Player final :
     kNameFieldNumber = 2,
     kIdFieldNumber = 1,
     kPlayerTypeFieldNumber = 3,
+    kXFieldNumber = 4,
+    kYFieldNumber = 5,
+    kZFieldNumber = 6,
   };
   // string name = 2;
   void clear_name();
@@ -210,6 +213,33 @@ class Player final :
   void _internal_set_playertype(::Protocol::PlayerType value);
   public:
 
+  // float x = 4;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 5;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 6;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.Player)
  private:
   class _Internal;
@@ -220,6 +250,9 @@ class Player final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::uint64 id_;
   int playertype_;
+  float x_;
+  float y_;
+  float z_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
@@ -317,6 +350,66 @@ inline void Player::_internal_set_playertype(::Protocol::PlayerType value) {
 inline void Player::set_playertype(::Protocol::PlayerType value) {
   _internal_set_playertype(value);
   // @@protoc_insertion_point(field_set:Protocol.Player.playerType)
+}
+
+// float x = 4;
+inline void Player::clear_x() {
+  x_ = 0;
+}
+inline float Player::_internal_x() const {
+  return x_;
+}
+inline float Player::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.x)
+  return _internal_x();
+}
+inline void Player::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void Player::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.x)
+}
+
+// float y = 5;
+inline void Player::clear_y() {
+  y_ = 0;
+}
+inline float Player::_internal_y() const {
+  return y_;
+}
+inline float Player::y() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.y)
+  return _internal_y();
+}
+inline void Player::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void Player::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.y)
+}
+
+// float z = 6;
+inline void Player::clear_z() {
+  z_ = 0;
+}
+inline float Player::_internal_z() const {
+  return z_;
+}
+inline float Player::z() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.z)
+  return _internal_z();
+}
+inline void Player::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void Player::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.z)
 }
 
 #ifdef __GNUC__

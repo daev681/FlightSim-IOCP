@@ -8,8 +8,8 @@ public:
 	string					name;
 	Protocol::PlayerType	type = Protocol::PLAYER_TYPE_NONE;
 	GameSessionRef			ownerSession; // Cycle
-	double                  x = 0;
-	double                  y = 0;
-	double                  z = 0;
+	float                  x = 0;
+	float                  y = 0;
+	float                  z = 0;
 };
 

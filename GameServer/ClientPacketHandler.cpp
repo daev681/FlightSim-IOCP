@@ -3,8 +3,15 @@
 #include "Player.h"
 #include "Room.h"
 #include "GameSession.h"
-
+static std::unordered_map<int, PlayerRef> currentPlayersMap;
 PacketHandlerFunc GPacketHandler[UINT16_MAX];
+
+
+// IsPlayerIDExists 함수 수정
+bool IsPlayerIDExists(int playerId) {
+	// unordered_map의 find 함수를 사용하여 playerId를 탐색
+	return currentPlayersMap.find(playerId) != currentPlayersMap.end();
+}
 
 // 직접 컨텐츠 작업자
 
@@ -29,7 +36,7 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 	// GameSession에 플레이 정보를 저장 (메모리)
 
 	// ID 발급 (DB 아이디가 아니고, 인게임 아이디)
-	static Atomic<uint64> idGenerator = 1;
+	static Atomic<uint64> idGenerator = 0;
 
 	//{
 	//	auto player = loginPkt.add_players();
@@ -50,18 +57,24 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 		player->set_name(u8"AIrPlane" + to_string(idGenerator));
 		player->set_id(idGenerator);
 		player->set_playertype(Protocol::PLAYER_TYPE_MAGE);
-
+		player->set_x(0);
+		player->set_y(450);
+		player->set_z(-2500);
 		PlayerRef playerRef = MakeShared<Player>();
 		playerRef->playerId = idGenerator++;
 		playerRef->name = player->name();
 		playerRef->type = player->playertype();
-		playerRef->x = 0;
-		playerRef->y = 350;
-		playerRef->z = -2200;
-
 		playerRef->ownerSession = gameSession;
+		playerRef->x = player->x();
+		playerRef->y = player->y();
+		playerRef->z = player->z();
+		if (!IsPlayerIDExists(playerRef->playerId)) {
+			currentPlayersMap[playerRef->playerId] = playerRef;
+		}
 
 		gameSession->_players.push_back(playerRef);
+	
+		
 	}
 
 	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(loginPkt);
@@ -69,6 +82,8 @@ bool Handle_C_LOGIN(PacketSessionRef& session, Protocol::C_LOGIN& pkt)
 
 	return true;
 }
+
+
 
 bool Handle_C_ENTER_GAME(PacketSessionRef& session, Protocol::C_ENTER_GAME& pkt)
 {
@@ -80,12 +95,21 @@ bool Handle_C_ENTER_GAME(PacketSessionRef& session, Protocol::C_ENTER_GAME& pkt)
 
 	PlayerRef player = gameSession->_players[index]; // READ_ONLY?
 	GRoom.Enter(player); // WRITE_LOCK
-
 	Protocol::S_ENTER_GAME enterGamePkt;
 	enterGamePkt.set_success(true);
+	for (const auto& currentPlayer : currentPlayersMap) {
+		Protocol::Player* playerMsg = enterGamePkt.add_currentallplayers();
+		playerMsg->set_id(currentPlayer.second->playerId);
+		playerMsg->set_name(currentPlayer.second->name);
+		playerMsg->set_x(currentPlayer.second->x);
+		playerMsg->set_y(currentPlayer.second->y);
+		playerMsg->set_z(currentPlayer.second->z);
+	}
+
+	std::cout << "환영합니다. " << player->playerId << " 님이 입장 하였습니다." << std::endl;
 	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(enterGamePkt);
 	player->ownerSession->Send(sendBuffer);
-
+	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
 	return true;
 }
 
@@ -104,18 +128,23 @@ bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt)
 
 bool Handle_C_POSITION(PacketSessionRef& session, Protocol::C_POSITION& pkt)
 {
-	std::cout << pkt.x() << endl;
-	std::cout << pkt.y() << endl;
-	std::cout << pkt.z() << endl;
-	Protocol::S_POSITION positionPkt;
-	positionPkt.set_playerid(pkt.playerid());
-	positionPkt.set_x(pkt.x());
-	positionPkt.set_y(pkt.y());
-	positionPkt.set_z(pkt.z());
-	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(positionPkt);
+	
+	GameSessionRef gameSession = static_pointer_cast<GameSession>(session);
+	PlayerRef player = gameSession->_players[0]; // READ_ONLY?
 
-	GRoom.Broadcast(sendBuffer); // WRITE_LOCK
-
+	if (!IsPlayerIDExists(player->playerId)) {
+		PlayerRef currentSession = currentPlayersMap[player->playerId];
+		currentSession->x = pkt.x();
+		currentSession->y = pkt.y();
+		currentSession->z = pkt.z();
+		currentPlayersMap[player->playerId] = currentSession;
+		Protocol::S_POSITION positionPkt;
+		for (const auto& currentPlayer : currentPlayersMap) {
+			Protocol::Player* playerMsg = positionPkt.add_currentallplayers();
+		}
+		auto sendBuffer = ClientPacketHandler::MakeSendBuffer(positionPkt);
+		GRoom.Broadcast(sendBuffer); // WRITE_LOCK
+	}
 
 	return true;
 }
@@ -123,6 +152,11 @@ bool Handle_C_POSITION(PacketSessionRef& session, Protocol::C_POSITION& pkt)
 bool Handle_C_MISSILE(PacketSessionRef& session, Protocol::C_MISSILE& pkt)
 {
 	return true;
+}
+
+bool Handle_C_DESTORY(PacketSessionRef& session, Protocol::C_DESTORY& pkt)
+{
+	return false;
 }
 
 bool Handle_C_TEST(PacketSessionRef& session, Protocol::C_CHAT& pkt)
