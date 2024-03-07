@@ -177,9 +177,12 @@ class Player final :
     kNameFieldNumber = 2,
     kIdFieldNumber = 1,
     kPlayerTypeFieldNumber = 3,
-    kXFieldNumber = 4,
-    kYFieldNumber = 5,
-    kZFieldNumber = 6,
+    kPxFieldNumber = 4,
+    kPyFieldNumber = 5,
+    kPzFieldNumber = 6,
+    kRxFieldNumber = 7,
+    kRyFieldNumber = 8,
+    kRzFieldNumber = 9,
   };
   // string name = 2;
   void clear_name();
@@ -213,31 +216,58 @@ class Player final :
   void _internal_set_playertype(::Protocol::PlayerType value);
   public:
 
-  // float x = 4;
-  void clear_x();
-  float x() const;
-  void set_x(float value);
+  // float px = 4;
+  void clear_px();
+  float px() const;
+  void set_px(float value);
   private:
-  float _internal_x() const;
-  void _internal_set_x(float value);
+  float _internal_px() const;
+  void _internal_set_px(float value);
   public:
 
-  // float y = 5;
-  void clear_y();
-  float y() const;
-  void set_y(float value);
+  // float py = 5;
+  void clear_py();
+  float py() const;
+  void set_py(float value);
   private:
-  float _internal_y() const;
-  void _internal_set_y(float value);
+  float _internal_py() const;
+  void _internal_set_py(float value);
   public:
 
-  // float z = 6;
-  void clear_z();
-  float z() const;
-  void set_z(float value);
+  // float pz = 6;
+  void clear_pz();
+  float pz() const;
+  void set_pz(float value);
   private:
-  float _internal_z() const;
-  void _internal_set_z(float value);
+  float _internal_pz() const;
+  void _internal_set_pz(float value);
+  public:
+
+  // float rx = 7;
+  void clear_rx();
+  float rx() const;
+  void set_rx(float value);
+  private:
+  float _internal_rx() const;
+  void _internal_set_rx(float value);
+  public:
+
+  // float ry = 8;
+  void clear_ry();
+  float ry() const;
+  void set_ry(float value);
+  private:
+  float _internal_ry() const;
+  void _internal_set_ry(float value);
+  public:
+
+  // float rz = 9;
+  void clear_rz();
+  float rz() const;
+  void set_rz(float value);
+  private:
+  float _internal_rz() const;
+  void _internal_set_rz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.Player)
@@ -250,9 +280,12 @@ class Player final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::uint64 id_;
   int playertype_;
-  float x_;
-  float y_;
-  float z_;
+  float px_;
+  float py_;
+  float pz_;
+  float rx_;
+  float ry_;
+  float rz_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
@@ -352,64 +385,124 @@ inline void Player::set_playertype(::Protocol::PlayerType value) {
   // @@protoc_insertion_point(field_set:Protocol.Player.playerType)
 }
 
-// float x = 4;
-inline void Player::clear_x() {
-  x_ = 0;
+// float px = 4;
+inline void Player::clear_px() {
+  px_ = 0;
 }
-inline float Player::_internal_x() const {
-  return x_;
+inline float Player::_internal_px() const {
+  return px_;
 }
-inline float Player::x() const {
-  // @@protoc_insertion_point(field_get:Protocol.Player.x)
-  return _internal_x();
+inline float Player::px() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.px)
+  return _internal_px();
 }
-inline void Player::_internal_set_x(float value) {
+inline void Player::_internal_set_px(float value) {
   
-  x_ = value;
+  px_ = value;
 }
-inline void Player::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:Protocol.Player.x)
+inline void Player::set_px(float value) {
+  _internal_set_px(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.px)
 }
 
-// float y = 5;
-inline void Player::clear_y() {
-  y_ = 0;
+// float py = 5;
+inline void Player::clear_py() {
+  py_ = 0;
 }
-inline float Player::_internal_y() const {
-  return y_;
+inline float Player::_internal_py() const {
+  return py_;
 }
-inline float Player::y() const {
-  // @@protoc_insertion_point(field_get:Protocol.Player.y)
-  return _internal_y();
+inline float Player::py() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.py)
+  return _internal_py();
 }
-inline void Player::_internal_set_y(float value) {
+inline void Player::_internal_set_py(float value) {
   
-  y_ = value;
+  py_ = value;
 }
-inline void Player::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:Protocol.Player.y)
+inline void Player::set_py(float value) {
+  _internal_set_py(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.py)
 }
 
-// float z = 6;
-inline void Player::clear_z() {
-  z_ = 0;
+// float pz = 6;
+inline void Player::clear_pz() {
+  pz_ = 0;
 }
-inline float Player::_internal_z() const {
-  return z_;
+inline float Player::_internal_pz() const {
+  return pz_;
 }
-inline float Player::z() const {
-  // @@protoc_insertion_point(field_get:Protocol.Player.z)
-  return _internal_z();
+inline float Player::pz() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.pz)
+  return _internal_pz();
 }
-inline void Player::_internal_set_z(float value) {
+inline void Player::_internal_set_pz(float value) {
   
-  z_ = value;
+  pz_ = value;
 }
-inline void Player::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:Protocol.Player.z)
+inline void Player::set_pz(float value) {
+  _internal_set_pz(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.pz)
+}
+
+// float rx = 7;
+inline void Player::clear_rx() {
+  rx_ = 0;
+}
+inline float Player::_internal_rx() const {
+  return rx_;
+}
+inline float Player::rx() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.rx)
+  return _internal_rx();
+}
+inline void Player::_internal_set_rx(float value) {
+  
+  rx_ = value;
+}
+inline void Player::set_rx(float value) {
+  _internal_set_rx(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.rx)
+}
+
+// float ry = 8;
+inline void Player::clear_ry() {
+  ry_ = 0;
+}
+inline float Player::_internal_ry() const {
+  return ry_;
+}
+inline float Player::ry() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.ry)
+  return _internal_ry();
+}
+inline void Player::_internal_set_ry(float value) {
+  
+  ry_ = value;
+}
+inline void Player::set_ry(float value) {
+  _internal_set_ry(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.ry)
+}
+
+// float rz = 9;
+inline void Player::clear_rz() {
+  rz_ = 0;
+}
+inline float Player::_internal_rz() const {
+  return rz_;
+}
+inline float Player::rz() const {
+  // @@protoc_insertion_point(field_get:Protocol.Player.rz)
+  return _internal_rz();
+}
+inline void Player::_internal_set_rz(float value) {
+  
+  rz_ = value;
+}
+inline void Player::set_rz(float value) {
+  _internal_set_rz(value);
+  // @@protoc_insertion_point(field_set:Protocol.Player.rz)
 }
 
 #ifdef __GNUC__

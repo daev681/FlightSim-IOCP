@@ -93,9 +93,12 @@ struct S_CHATDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT S_CHATDefaultTypeInternal _S_CHAT_default_instance_;
 constexpr C_POSITION::C_POSITION(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : x_(0)
-  , y_(0)
-  , z_(0){}
+  : px_(0)
+  , py_(0)
+  , pz_(0)
+  , rx_(0)
+  , ry_(0)
+  , rz_(0){}
 struct C_POSITIONDefaultTypeInternal {
   constexpr C_POSITIONDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -248,9 +251,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Protocol_2eproto::offsets[] PR
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, x_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, y_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, z_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, px_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, py_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, pz_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, rx_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, ry_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::C_POSITION, rz_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Protocol::S_POSITION, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -312,13 +318,13 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 25, -1, sizeof(::Protocol::C_CHAT)},
   { 31, -1, sizeof(::Protocol::S_CHAT)},
   { 38, -1, sizeof(::Protocol::C_POSITION)},
-  { 46, -1, sizeof(::Protocol::S_POSITION)},
-  { 52, -1, sizeof(::Protocol::C_MISSILE)},
-  { 63, -1, sizeof(::Protocol::S_MISSILE)},
-  { 75, -1, sizeof(::Protocol::C_DESTROY)},
-  { 80, -1, sizeof(::Protocol::S_DESTROY)},
-  { 87, -1, sizeof(::Protocol::C_INFO)},
-  { 92, -1, sizeof(::Protocol::S_INFO)},
+  { 49, -1, sizeof(::Protocol::S_POSITION)},
+  { 55, -1, sizeof(::Protocol::C_MISSILE)},
+  { 66, -1, sizeof(::Protocol::S_MISSILE)},
+  { 78, -1, sizeof(::Protocol::C_DESTROY)},
+  { 83, -1, sizeof(::Protocol::S_DESTROY)},
+  { 90, -1, sizeof(::Protocol::C_INFO)},
+  { 95, -1, sizeof(::Protocol::S_INFO)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -346,18 +352,19 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "\001(\004\"L\n\014S_ENTER_GAME\022\017\n\007success\030\001 \001(\010\022+\n\021"
   "currentAllplayers\030\002 \003(\0132\020.Protocol.Playe"
   "r\"\025\n\006C_CHAT\022\013\n\003msg\030\001 \001(\t\"\'\n\006S_CHAT\022\020\n\010pl"
-  "ayerId\030\001 \001(\004\022\013\n\003msg\030\002 \001(\t\"-\n\nC_POSITION\022"
-  "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"9\n\nS_PO"
-  "SITION\022+\n\021currentAllplayers\030\001 \003(\0132\020.Prot"
-  "ocol.Player\"S\n\tC_MISSILE\022\n\n\002px\030\001 \001(\002\022\n\n\002"
-  "py\030\002 \001(\002\022\n\n\002pz\030\003 \001(\002\022\n\n\002rx\030\004 \001(\002\022\n\n\002ry\030\005"
-  " \001(\002\022\n\n\002rz\030\006 \001(\002\"e\n\tS_MISSILE\022\020\n\010playerI"
-  "d\030\001 \001(\004\022\n\n\002px\030\002 \001(\002\022\n\n\002py\030\003 \001(\002\022\n\n\002pz\030\004 "
-  "\001(\002\022\n\n\002rx\030\005 \001(\002\022\n\n\002ry\030\006 \001(\002\022\n\n\002rz\030\007 \001(\002\""
-  "\013\n\tC_DESTROY\".\n\tS_DESTROY\022\020\n\010playerId\030\001 "
-  "\001(\004\022\017\n\007success\030\002 \001(\004\"\010\n\006C_INFO\"+\n\006S_INFO"
-  "\022!\n\007players\030\001 \003(\0132\020.Protocol.Playerb\006pro"
-  "to3"
+  "ayerId\030\001 \001(\004\022\013\n\003msg\030\002 \001(\t\"T\n\nC_POSITION\022"
+  "\n\n\002px\030\001 \001(\002\022\n\n\002py\030\002 \001(\002\022\n\n\002pz\030\003 \001(\002\022\n\n\002r"
+  "x\030\004 \001(\002\022\n\n\002ry\030\005 \001(\002\022\n\n\002rz\030\006 \001(\002\"9\n\nS_POS"
+  "ITION\022+\n\021currentAllplayers\030\001 \003(\0132\020.Proto"
+  "col.Player\"S\n\tC_MISSILE\022\n\n\002px\030\001 \001(\002\022\n\n\002p"
+  "y\030\002 \001(\002\022\n\n\002pz\030\003 \001(\002\022\n\n\002rx\030\004 \001(\002\022\n\n\002ry\030\005 "
+  "\001(\002\022\n\n\002rz\030\006 \001(\002\"e\n\tS_MISSILE\022\020\n\010playerId"
+  "\030\001 \001(\004\022\n\n\002px\030\002 \001(\002\022\n\n\002py\030\003 \001(\002\022\n\n\002pz\030\004 \001"
+  "(\002\022\n\n\002rx\030\005 \001(\002\022\n\n\002ry\030\006 \001(\002\022\n\n\002rz\030\007 \001(\002\"\013"
+  "\n\tC_DESTROY\".\n\tS_DESTROY\022\020\n\010playerId\030\001 \001"
+  "(\004\022\017\n\007success\030\002 \001(\004\"\010\n\006C_INFO\"+\n\006S_INFO\022"
+  "!\n\007players\030\001 \003(\0132\020.Protocol.Playerb\006prot"
+  "o3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Protocol_2eproto_deps[2] = {
   &::descriptor_table_Enum_2eproto,
@@ -365,7 +372,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Protocol_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Protocol_2eproto = {
-  false, false, 723, descriptor_table_protodef_Protocol_2eproto, "Protocol.proto", 
+  false, false, 762, descriptor_table_protodef_Protocol_2eproto, "Protocol.proto", 
   &descriptor_table_Protocol_2eproto_once, descriptor_table_Protocol_2eproto_deps, 2, 14,
   schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
   file_level_metadata_Protocol_2eproto, file_level_enum_descriptors_Protocol_2eproto, file_level_service_descriptors_Protocol_2eproto,
@@ -1624,17 +1631,17 @@ C_POSITION::C_POSITION(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 C_POSITION::C_POSITION(const C_POSITION& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  ::memcpy(&px_, &from.px_,
+    static_cast<size_t>(reinterpret_cast<char*>(&rz_) -
+    reinterpret_cast<char*>(&px_)) + sizeof(rz_));
   // @@protoc_insertion_point(copy_constructor:Protocol.C_POSITION)
 }
 
 void C_POSITION::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+    reinterpret_cast<char*>(&px_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&rz_) -
+    reinterpret_cast<char*>(&px_)) + sizeof(rz_));
 }
 
 C_POSITION::~C_POSITION() {
@@ -1663,9 +1670,9 @@ void C_POSITION::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&z_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  ::memset(&px_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rz_) -
+      reinterpret_cast<char*>(&px_)) + sizeof(rz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1675,24 +1682,45 @@ const char* C_POSITION::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // float x = 1;
+      // float px = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          px_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float y = 2;
+      // float py = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          py_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float z = 3;
+      // float pz = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          pz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float rx = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          rx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float ry = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          ry_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float rz = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          rz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
@@ -1725,22 +1753,40 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  // float px = 1;
+  if (!(this->px() <= 0 && this->px() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_px(), target);
   }
 
-  // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  // float py = 2;
+  if (!(this->py() <= 0 && this->py() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_py(), target);
   }
 
-  // float z = 3;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
+  // float pz = 3;
+  if (!(this->pz() <= 0 && this->pz() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_z(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_pz(), target);
+  }
+
+  // float rx = 4;
+  if (!(this->rx() <= 0 && this->rx() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_rx(), target);
+  }
+
+  // float ry = 5;
+  if (!(this->ry() <= 0 && this->ry() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_ry(), target);
+  }
+
+  // float rz = 6;
+  if (!(this->rz() <= 0 && this->rz() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_rz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1759,18 +1805,33 @@ size_t C_POSITION::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  // float px = 1;
+  if (!(this->px() <= 0 && this->px() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  // float py = 2;
+  if (!(this->py() <= 0 && this->py() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float z = 3;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
+  // float pz = 3;
+  if (!(this->pz() <= 0 && this->pz() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float rx = 4;
+  if (!(this->rx() <= 0 && this->rx() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float ry = 5;
+  if (!(this->ry() <= 0 && this->ry() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float rz = 6;
+  if (!(this->rz() <= 0 && this->rz() >= 0)) {
     total_size += 1 + 4;
   }
 
@@ -1805,14 +1866,23 @@ void C_POSITION::MergeFrom(const C_POSITION& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  if (!(from.px() <= 0 && from.px() >= 0)) {
+    _internal_set_px(from._internal_px());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  if (!(from.py() <= 0 && from.py() >= 0)) {
+    _internal_set_py(from._internal_py());
   }
-  if (!(from.z() <= 0 && from.z() >= 0)) {
-    _internal_set_z(from._internal_z());
+  if (!(from.pz() <= 0 && from.pz() >= 0)) {
+    _internal_set_pz(from._internal_pz());
+  }
+  if (!(from.rx() <= 0 && from.rx() >= 0)) {
+    _internal_set_rx(from._internal_rx());
+  }
+  if (!(from.ry() <= 0 && from.ry() >= 0)) {
+    _internal_set_ry(from._internal_ry());
+  }
+  if (!(from.rz() <= 0 && from.rz() >= 0)) {
+    _internal_set_rz(from._internal_rz());
   }
 }
 
@@ -1838,11 +1908,11 @@ void C_POSITION::InternalSwap(C_POSITION* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(C_POSITION, z_)
-      + sizeof(C_POSITION::z_)
-      - PROTOBUF_FIELD_OFFSET(C_POSITION, x_)>(
-          reinterpret_cast<char*>(&x_),
-          reinterpret_cast<char*>(&other->x_));
+      PROTOBUF_FIELD_OFFSET(C_POSITION, rz_)
+      + sizeof(C_POSITION::rz_)
+      - PROTOBUF_FIELD_OFFSET(C_POSITION, px_)>(
+          reinterpret_cast<char*>(&px_),
+          reinterpret_cast<char*>(&other->px_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata C_POSITION::GetMetadata() const {

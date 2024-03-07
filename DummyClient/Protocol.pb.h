@@ -1067,35 +1067,65 @@ class C_POSITION final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kXFieldNumber = 1,
-    kYFieldNumber = 2,
-    kZFieldNumber = 3,
+    kPxFieldNumber = 1,
+    kPyFieldNumber = 2,
+    kPzFieldNumber = 3,
+    kRxFieldNumber = 4,
+    kRyFieldNumber = 5,
+    kRzFieldNumber = 6,
   };
-  // float x = 1;
-  void clear_x();
-  float x() const;
-  void set_x(float value);
+  // float px = 1;
+  void clear_px();
+  float px() const;
+  void set_px(float value);
   private:
-  float _internal_x() const;
-  void _internal_set_x(float value);
+  float _internal_px() const;
+  void _internal_set_px(float value);
   public:
 
-  // float y = 2;
-  void clear_y();
-  float y() const;
-  void set_y(float value);
+  // float py = 2;
+  void clear_py();
+  float py() const;
+  void set_py(float value);
   private:
-  float _internal_y() const;
-  void _internal_set_y(float value);
+  float _internal_py() const;
+  void _internal_set_py(float value);
   public:
 
-  // float z = 3;
-  void clear_z();
-  float z() const;
-  void set_z(float value);
+  // float pz = 3;
+  void clear_pz();
+  float pz() const;
+  void set_pz(float value);
   private:
-  float _internal_z() const;
-  void _internal_set_z(float value);
+  float _internal_pz() const;
+  void _internal_set_pz(float value);
+  public:
+
+  // float rx = 4;
+  void clear_rx();
+  float rx() const;
+  void set_rx(float value);
+  private:
+  float _internal_rx() const;
+  void _internal_set_rx(float value);
+  public:
+
+  // float ry = 5;
+  void clear_ry();
+  float ry() const;
+  void set_ry(float value);
+  private:
+  float _internal_ry() const;
+  void _internal_set_ry(float value);
+  public:
+
+  // float rz = 6;
+  void clear_rz();
+  float rz() const;
+  void set_rz(float value);
+  private:
+  float _internal_rz() const;
+  void _internal_set_rz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:Protocol.C_POSITION)
@@ -1105,9 +1135,12 @@ class C_POSITION final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  float x_;
-  float y_;
-  float z_;
+  float px_;
+  float py_;
+  float pz_;
+  float rx_;
+  float ry_;
+  float rz_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Protocol_2eproto;
 };
@@ -2436,64 +2469,124 @@ inline void S_CHAT::set_allocated_msg(std::string* msg) {
 
 // C_POSITION
 
-// float x = 1;
-inline void C_POSITION::clear_x() {
-  x_ = 0;
+// float px = 1;
+inline void C_POSITION::clear_px() {
+  px_ = 0;
 }
-inline float C_POSITION::_internal_x() const {
-  return x_;
+inline float C_POSITION::_internal_px() const {
+  return px_;
 }
-inline float C_POSITION::x() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.x)
-  return _internal_x();
+inline float C_POSITION::px() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.px)
+  return _internal_px();
 }
-inline void C_POSITION::_internal_set_x(float value) {
+inline void C_POSITION::_internal_set_px(float value) {
   
-  x_ = value;
+  px_ = value;
 }
-inline void C_POSITION::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.x)
+inline void C_POSITION::set_px(float value) {
+  _internal_set_px(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.px)
 }
 
-// float y = 2;
-inline void C_POSITION::clear_y() {
-  y_ = 0;
+// float py = 2;
+inline void C_POSITION::clear_py() {
+  py_ = 0;
 }
-inline float C_POSITION::_internal_y() const {
-  return y_;
+inline float C_POSITION::_internal_py() const {
+  return py_;
 }
-inline float C_POSITION::y() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.y)
-  return _internal_y();
+inline float C_POSITION::py() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.py)
+  return _internal_py();
 }
-inline void C_POSITION::_internal_set_y(float value) {
+inline void C_POSITION::_internal_set_py(float value) {
   
-  y_ = value;
+  py_ = value;
 }
-inline void C_POSITION::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.y)
+inline void C_POSITION::set_py(float value) {
+  _internal_set_py(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.py)
 }
 
-// float z = 3;
-inline void C_POSITION::clear_z() {
-  z_ = 0;
+// float pz = 3;
+inline void C_POSITION::clear_pz() {
+  pz_ = 0;
 }
-inline float C_POSITION::_internal_z() const {
-  return z_;
+inline float C_POSITION::_internal_pz() const {
+  return pz_;
 }
-inline float C_POSITION::z() const {
-  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.z)
-  return _internal_z();
+inline float C_POSITION::pz() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.pz)
+  return _internal_pz();
 }
-inline void C_POSITION::_internal_set_z(float value) {
+inline void C_POSITION::_internal_set_pz(float value) {
   
-  z_ = value;
+  pz_ = value;
 }
-inline void C_POSITION::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.z)
+inline void C_POSITION::set_pz(float value) {
+  _internal_set_pz(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.pz)
+}
+
+// float rx = 4;
+inline void C_POSITION::clear_rx() {
+  rx_ = 0;
+}
+inline float C_POSITION::_internal_rx() const {
+  return rx_;
+}
+inline float C_POSITION::rx() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.rx)
+  return _internal_rx();
+}
+inline void C_POSITION::_internal_set_rx(float value) {
+  
+  rx_ = value;
+}
+inline void C_POSITION::set_rx(float value) {
+  _internal_set_rx(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.rx)
+}
+
+// float ry = 5;
+inline void C_POSITION::clear_ry() {
+  ry_ = 0;
+}
+inline float C_POSITION::_internal_ry() const {
+  return ry_;
+}
+inline float C_POSITION::ry() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.ry)
+  return _internal_ry();
+}
+inline void C_POSITION::_internal_set_ry(float value) {
+  
+  ry_ = value;
+}
+inline void C_POSITION::set_ry(float value) {
+  _internal_set_ry(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.ry)
+}
+
+// float rz = 6;
+inline void C_POSITION::clear_rz() {
+  rz_ = 0;
+}
+inline float C_POSITION::_internal_rz() const {
+  return rz_;
+}
+inline float C_POSITION::rz() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_POSITION.rz)
+  return _internal_rz();
+}
+inline void C_POSITION::_internal_set_rz(float value) {
+  
+  rz_ = value;
+}
+inline void C_POSITION::set_rz(float value) {
+  _internal_set_rz(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_POSITION.rz)
 }
 
 // -------------------------------------------------------------------

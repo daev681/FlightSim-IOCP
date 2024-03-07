@@ -23,9 +23,12 @@ constexpr Player::Player(
   , id_(uint64_t{0u})
   , playertype_(0)
 
-  , x_(0)
-  , y_(0)
-  , z_(0){}
+  , px_(0)
+  , py_(0)
+  , pz_(0)
+  , rx_(0)
+  , ry_(0)
+  , rz_(0){}
 struct PlayerDefaultTypeInternal {
   constexpr PlayerDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -49,9 +52,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Struct_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::Protocol::Player, id_),
   PROTOBUF_FIELD_OFFSET(::Protocol::Player, name_),
   PROTOBUF_FIELD_OFFSET(::Protocol::Player, playertype_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::Player, x_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::Player, y_),
-  PROTOBUF_FIELD_OFFSET(::Protocol::Player, z_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, px_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, py_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, pz_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, rx_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, ry_),
+  PROTOBUF_FIELD_OFFSET(::Protocol::Player, rz_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Protocol::Player)},
@@ -62,17 +68,18 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Struct_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014Struct.proto\022\010Protocol\032\nEnum.proto\"m\n\006"
-  "Player\022\n\n\002id\030\001 \001(\004\022\014\n\004name\030\002 \001(\t\022(\n\nplay"
-  "erType\030\003 \001(\0162\024.Protocol.PlayerType\022\t\n\001x\030"
-  "\004 \001(\002\022\t\n\001y\030\005 \001(\002\022\t\n\001z\030\006 \001(\002b\006proto3"
+  "\n\014Struct.proto\022\010Protocol\032\nEnum.proto\"\224\001\n"
+  "\006Player\022\n\n\002id\030\001 \001(\004\022\014\n\004name\030\002 \001(\t\022(\n\npla"
+  "yerType\030\003 \001(\0162\024.Protocol.PlayerType\022\n\n\002p"
+  "x\030\004 \001(\002\022\n\n\002py\030\005 \001(\002\022\n\n\002pz\030\006 \001(\002\022\n\n\002rx\030\007 "
+  "\001(\002\022\n\n\002ry\030\010 \001(\002\022\n\n\002rz\030\t \001(\002b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Struct_2eproto_deps[1] = {
   &::descriptor_table_Enum_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Struct_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Struct_2eproto = {
-  false, false, 155, descriptor_table_protodef_Struct_2eproto, "Struct.proto", 
+  false, false, 195, descriptor_table_protodef_Struct_2eproto, "Struct.proto", 
   &descriptor_table_Struct_2eproto_once, descriptor_table_Struct_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_Struct_2eproto::offsets,
   file_level_metadata_Struct_2eproto, file_level_enum_descriptors_Struct_2eproto, file_level_service_descriptors_Struct_2eproto,
@@ -106,8 +113,8 @@ Player::Player(const Player& from)
       GetArenaForAllocation());
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(z_));
+    static_cast<size_t>(reinterpret_cast<char*>(&rz_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(rz_));
   // @@protoc_insertion_point(copy_constructor:Protocol.Player)
 }
 
@@ -115,8 +122,8 @@ void Player::SharedCtor() {
 name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(z_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&rz_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(rz_));
 }
 
 Player::~Player() {
@@ -148,8 +155,8 @@ void Player::Clear() {
 
   name_.ClearToEmpty();
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&z_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(z_));
+      reinterpret_cast<char*>(&rz_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(rz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -183,24 +190,45 @@ const char* Player::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           _internal_set_playertype(static_cast<::Protocol::PlayerType>(val));
         } else goto handle_unusual;
         continue;
-      // float x = 4;
+      // float px = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          px_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float y = 5;
+      // float py = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          py_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // float z = 6;
+      // float pz = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
-          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          pz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float rx = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 61)) {
+          rx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float ry = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 69)) {
+          ry_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      // float rz = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 77)) {
+          rz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
@@ -256,22 +284,40 @@ failure:
       3, this->_internal_playertype(), target);
   }
 
-  // float x = 4;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  // float px = 4;
+  if (!(this->px() <= 0 && this->px() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_x(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_px(), target);
   }
 
-  // float y = 5;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  // float py = 5;
+  if (!(this->py() <= 0 && this->py() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_y(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_py(), target);
   }
 
-  // float z = 6;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
+  // float pz = 6;
+  if (!(this->pz() <= 0 && this->pz() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_z(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_pz(), target);
+  }
+
+  // float rx = 7;
+  if (!(this->rx() <= 0 && this->rx() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(7, this->_internal_rx(), target);
+  }
+
+  // float ry = 8;
+  if (!(this->ry() <= 0 && this->ry() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(8, this->_internal_ry(), target);
+  }
+
+  // float rz = 9;
+  if (!(this->rz() <= 0 && this->rz() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(9, this->_internal_rz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -310,18 +356,33 @@ size_t Player::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_playertype());
   }
 
-  // float x = 4;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  // float px = 4;
+  if (!(this->px() <= 0 && this->px() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float y = 5;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  // float py = 5;
+  if (!(this->py() <= 0 && this->py() >= 0)) {
     total_size += 1 + 4;
   }
 
-  // float z = 6;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
+  // float pz = 6;
+  if (!(this->pz() <= 0 && this->pz() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float rx = 7;
+  if (!(this->rx() <= 0 && this->rx() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float ry = 8;
+  if (!(this->ry() <= 0 && this->ry() >= 0)) {
+    total_size += 1 + 4;
+  }
+
+  // float rz = 9;
+  if (!(this->rz() <= 0 && this->rz() >= 0)) {
     total_size += 1 + 4;
   }
 
@@ -365,14 +426,23 @@ void Player::MergeFrom(const Player& from) {
   if (from.playertype() != 0) {
     _internal_set_playertype(from._internal_playertype());
   }
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  if (!(from.px() <= 0 && from.px() >= 0)) {
+    _internal_set_px(from._internal_px());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  if (!(from.py() <= 0 && from.py() >= 0)) {
+    _internal_set_py(from._internal_py());
   }
-  if (!(from.z() <= 0 && from.z() >= 0)) {
-    _internal_set_z(from._internal_z());
+  if (!(from.pz() <= 0 && from.pz() >= 0)) {
+    _internal_set_pz(from._internal_pz());
+  }
+  if (!(from.rx() <= 0 && from.rx() >= 0)) {
+    _internal_set_rx(from._internal_rx());
+  }
+  if (!(from.ry() <= 0 && from.ry() >= 0)) {
+    _internal_set_ry(from._internal_ry());
+  }
+  if (!(from.rz() <= 0 && from.rz() >= 0)) {
+    _internal_set_rz(from._internal_rz());
   }
 }
 
@@ -403,8 +473,8 @@ void Player::InternalSwap(Player* other) {
       &other->name_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Player, z_)
-      + sizeof(Player::z_)
+      PROTOBUF_FIELD_OFFSET(Player, rz_)
+      + sizeof(Player::rz_)
       - PROTOBUF_FIELD_OFFSET(Player, id_)>(
           reinterpret_cast<char*>(&id_),
           reinterpret_cast<char*>(&other->id_));
