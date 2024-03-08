@@ -1401,6 +1401,7 @@ class C_MISSILE final :
     kRxFieldNumber = 4,
     kRyFieldNumber = 5,
     kRzFieldNumber = 6,
+    kTargetIdFieldNumber = 7,
   };
   // float px = 1;
   void clear_px();
@@ -1456,6 +1457,15 @@ class C_MISSILE final :
   void _internal_set_rz(float value);
   public:
 
+  // uint64 targetId = 7;
+  void clear_targetid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 targetid() const;
+  void set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_targetid() const;
+  void _internal_set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.C_MISSILE)
  private:
   class _Internal;
@@ -1469,6 +1479,7 @@ class C_MISSILE final :
   float rx_;
   float ry_;
   float rz_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 targetid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Protocol_2eproto;
 };
@@ -1583,12 +1594,13 @@ class S_MISSILE final :
 
   enum : int {
     kPlayerIdFieldNumber = 1,
-    kPxFieldNumber = 2,
-    kPyFieldNumber = 3,
-    kPzFieldNumber = 4,
-    kRxFieldNumber = 5,
-    kRyFieldNumber = 6,
-    kRzFieldNumber = 7,
+    kTargetIdFieldNumber = 2,
+    kPxFieldNumber = 3,
+    kPyFieldNumber = 4,
+    kPzFieldNumber = 5,
+    kRxFieldNumber = 6,
+    kRyFieldNumber = 7,
+    kRzFieldNumber = 8,
   };
   // uint64 playerId = 1;
   void clear_playerid();
@@ -1599,7 +1611,16 @@ class S_MISSILE final :
   void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // float px = 2;
+  // uint64 targetId = 2;
+  void clear_targetid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 targetid() const;
+  void set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_targetid() const;
+  void _internal_set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // float px = 3;
   void clear_px();
   float px() const;
   void set_px(float value);
@@ -1608,7 +1629,7 @@ class S_MISSILE final :
   void _internal_set_px(float value);
   public:
 
-  // float py = 3;
+  // float py = 4;
   void clear_py();
   float py() const;
   void set_py(float value);
@@ -1617,7 +1638,7 @@ class S_MISSILE final :
   void _internal_set_py(float value);
   public:
 
-  // float pz = 4;
+  // float pz = 5;
   void clear_pz();
   float pz() const;
   void set_pz(float value);
@@ -1626,7 +1647,7 @@ class S_MISSILE final :
   void _internal_set_pz(float value);
   public:
 
-  // float rx = 5;
+  // float rx = 6;
   void clear_rx();
   float rx() const;
   void set_rx(float value);
@@ -1635,7 +1656,7 @@ class S_MISSILE final :
   void _internal_set_rx(float value);
   public:
 
-  // float ry = 6;
+  // float ry = 7;
   void clear_ry();
   float ry() const;
   void set_ry(float value);
@@ -1644,7 +1665,7 @@ class S_MISSILE final :
   void _internal_set_ry(float value);
   public:
 
-  // float rz = 7;
+  // float rz = 8;
   void clear_rz();
   float rz() const;
   void set_rz(float value);
@@ -1661,6 +1682,7 @@ class S_MISSILE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::uint64 playerid_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 targetid_;
   float px_;
   float py_;
   float pz_;
@@ -2753,6 +2775,26 @@ inline void C_MISSILE::set_rz(float value) {
   // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.rz)
 }
 
+// uint64 targetId = 7;
+inline void C_MISSILE::clear_targetid() {
+  targetid_ = uint64_t{0u};
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 C_MISSILE::_internal_targetid() const {
+  return targetid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 C_MISSILE::targetid() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MISSILE.targetId)
+  return _internal_targetid();
+}
+inline void C_MISSILE::_internal_set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  targetid_ = value;
+}
+inline void C_MISSILE::set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_targetid(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MISSILE.targetId)
+}
+
 // -------------------------------------------------------------------
 
 // S_MISSILE
@@ -2777,7 +2819,27 @@ inline void S_MISSILE::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.playerId)
 }
 
-// float px = 2;
+// uint64 targetId = 2;
+inline void S_MISSILE::clear_targetid() {
+  targetid_ = uint64_t{0u};
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_MISSILE::_internal_targetid() const {
+  return targetid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 S_MISSILE::targetid() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MISSILE.targetId)
+  return _internal_targetid();
+}
+inline void S_MISSILE::_internal_set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  targetid_ = value;
+}
+inline void S_MISSILE::set_targetid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_targetid(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.targetId)
+}
+
+// float px = 3;
 inline void S_MISSILE::clear_px() {
   px_ = 0;
 }
@@ -2797,7 +2859,7 @@ inline void S_MISSILE::set_px(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.px)
 }
 
-// float py = 3;
+// float py = 4;
 inline void S_MISSILE::clear_py() {
   py_ = 0;
 }
@@ -2817,7 +2879,7 @@ inline void S_MISSILE::set_py(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.py)
 }
 
-// float pz = 4;
+// float pz = 5;
 inline void S_MISSILE::clear_pz() {
   pz_ = 0;
 }
@@ -2837,7 +2899,7 @@ inline void S_MISSILE::set_pz(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.pz)
 }
 
-// float rx = 5;
+// float rx = 6;
 inline void S_MISSILE::clear_rx() {
   rx_ = 0;
 }
@@ -2857,7 +2919,7 @@ inline void S_MISSILE::set_rx(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.rx)
 }
 
-// float ry = 6;
+// float ry = 7;
 inline void S_MISSILE::clear_ry() {
   ry_ = 0;
 }
@@ -2877,7 +2939,7 @@ inline void S_MISSILE::set_ry(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MISSILE.ry)
 }
 
-// float rz = 7;
+// float rz = 8;
 inline void S_MISSILE::clear_rz() {
   rz_ = 0;
 }

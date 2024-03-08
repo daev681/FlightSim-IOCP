@@ -186,6 +186,7 @@ bool Handle_C_MISSILE(PacketSessionRef& session, Protocol::C_MISSILE& pkt)
 	missilePkt.set_rx(pkt.rx());
 	missilePkt.set_ry(pkt.ry());
 	missilePkt.set_rz(pkt.rz());
+	missilePkt.set_targetid(pkt.targetid());
 	missilePkt.set_playerid(player->playerId);
 
 	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(missilePkt);
