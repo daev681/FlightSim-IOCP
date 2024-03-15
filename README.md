@@ -18,19 +18,33 @@
 ![위치 동기화](https://github.com/daev681/FlightSim-unity3D/assets/54939319/4fd66f92-aa38-4f5b-8b33-60a816e33d3d)
 3. 이동
 ![실제 이동](https://github.com/daev681/FlightSim-unity3D/assets/54939319/0ba0479a-0845-47e0-a279-c7a5f3efb20a)
-4. 미사일 발사
+
+5. 미사일 발사
 
 ![미사일발사](https://github.com/daev681/FlightSim-unity3D/assets/54939319/e23a1ebb-77de-463c-b326-c0079ca5747d)
-5. 파괴
+
+7. Lock On
+![락온 ](https://github.com/daev681/FlightSim-unity3D/assets/54939319/86f5e7f8-c662-4890-842c-08a32e0b65e2)
+
+8. 미사일 격추 장면
+![유도 미사일 장면](https://github.com/daev681/FlightSim-unity3D/assets/54939319/d443d868-8a79-47c5-9285-56575608419c)
+
+10. 파괴
+    
 ![파괴](https://github.com/daev681/FlightSim-unity3D/assets/54939319/6605840c-dc0b-4048-852d-7ee515e699de)
-6. 서버 연산
 
-
+12. 서버 연산
+    
 ![서버연산](https://github.com/daev681/FlightSim-unity3D/assets/54939319/d653c02a-753e-4a42-a30b-60e4b0ac4b7c)
 
 
+
+
+
 ## 소스코드 
+
 C++ IOCP SERVER : https://github.com/daev681/FlightSim-IOCP
+
 Unity 3D Project : https://github.com/daev681/FlightSim-unity3D
 
 ## 한계점
@@ -48,5 +62,6 @@ Unity 3D Project : https://github.com/daev681/FlightSim-unity3D
 
 ================================
 ## 클라이언트 참고 사항 
-# 출처
+출처
+# FlightSim
 https://vazgriz.com/346/flight-simulator-in-unity3d-part-1/
